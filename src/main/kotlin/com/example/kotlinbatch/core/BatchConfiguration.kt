@@ -1,8 +1,8 @@
 package com.example.kotlinbatch.core
 
-import com.example.kotlinbatch.core.job.ExposedCursorItemReader
 import com.example.kotlinbatch.domain.Users
 import com.example.kotlinbatch.domain.UsersEntity
+import com.example.kotlinbatch.support.reader.ExposedCursorItemReader
 import javax.sql.DataSource
 import org.jetbrains.exposed.sql.selectAll
 import org.springframework.batch.core.Job
@@ -19,7 +19,6 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class BatchConfiguration(
-    private val dataSource: DataSource,
     private val transactionManager: PlatformTransactionManager,
     private val customItemWriter: CustomItemWriter
 ) {

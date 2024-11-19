@@ -1,4 +1,4 @@
-package com.example.kotlinbatch.core.job
+package com.example.kotlinbatch.support.reader
 
 import java.sql.ResultSet
 import javax.sql.DataSource
