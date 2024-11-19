@@ -1,12 +1,13 @@
 package com.example.kotlinbatch.core.job
 
+import java.sql.ResultSet
+import javax.sql.DataSource
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Query
 import org.jetbrains.exposed.sql.Transaction
+import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transactionManager
 import org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader
-import java.sql.ResultSet
-import javax.sql.DataSource
 
 class ExposedCursorItemReader<T>(
     name: String,
@@ -24,6 +25,7 @@ class ExposedCursorItemReader<T>(
     init {
         setName(name)
         connection = Database.connect(dataSource)
+        TransactionManager.defaultDatabase = connection
     }
 
     override fun doRead(): T? {

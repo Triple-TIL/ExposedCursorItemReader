@@ -6,11 +6,21 @@ spring:
       initialize-schema: always
 
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-#  exposed:
-#    generate-ddl: true
+    hikari:
+      danalpay:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/danalpay?useSSL=false&serverTimezone=UTC
+        username: root
+        password: 1234
+      oneapi:
+        driver-class-name: org.postgresql.Driver
+        jdbc-url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+        password: 1234
 
-logging.level.Exposed: debug
+  exposed:
+    generate-ddl: true
+
+logging:
+  level:
+    Exposed: debug

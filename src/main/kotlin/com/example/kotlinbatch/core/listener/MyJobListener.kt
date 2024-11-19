@@ -7,10 +7,12 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.batch.core.JobExecution
 import org.springframework.batch.core.JobExecutionListener
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class MyJobListener: JobExecutionListener {
 
+//    @Transactional("danalPayTransactionManager")
     override fun beforeJob(jobExecution: JobExecution) {
         super.beforeJob(jobExecution)
 
